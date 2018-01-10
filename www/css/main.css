@@ -62,8 +62,8 @@ h1 {
 
 button {
   border: 0;
-  background: rgba(42,50,113, .28);
-  color: #6cacc5;
+  background: rgba(42,50,113, .58);
+  color: white;
   cursor: pointer;
   float: left;
   font: inherit;
