@@ -11,24 +11,39 @@ class Calculator {
 	}
 
 
+
   eventHandler() {
     let that = this;
     let currentValue = "";
+		let operator;
+		let last;
     $(document).on('click', '.num', function() {
       currentValue += $(this).data('num');
+			that.display = currentValue;
+			that.render();
     });
+
     $(document).on('click', '.ops', function() {
-      that.mathArray.push(currentValue);
-      if ($(this).data('ops') == "times") {
-        that.mathArray.push('*');
-      } else if ($(this).data('ops') == "divided") {
-        that.mathArray.push('/');
-      } else if ($(this).data('ops') == "minus") {
-        that.mathArray.push('-');
-      } else if ($(this).data('ops') == "plus") {
-        that.mathArray.push('+');
-      }
-      currentValue = "";
+			if (currentValue) {
+      	that.mathArray.push(currentValue);
+			}
+
+
+			operator = $(this).data('ops');
+			last = that.mathArray[that.mathArray.length-1];
+			console.log(last);
+			if ( last == '+' || last ==  '-' || last ==  '*' || last ==  '/' ){
+				last = operator;
+			} else {
+				that.mathArray.push(operator);
+			}
+			that.display = currentValue + operator;
+
+
+
+			currentValue = "";
+			that.render();
+
     });
   }
 
